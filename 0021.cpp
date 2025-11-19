@@ -41,9 +41,9 @@ ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
         }
         result = result->next;
     }
-    if (!list_ptr1)
-        result->next = list_ptr2;
-    else
+    if (list_ptr1)
         result->next = list_ptr1;
+    else
+        result->next = list_ptr2;
     return head;
 }
