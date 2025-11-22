@@ -8,9 +8,10 @@ int searchInsert(vector<int> &nums, int target)
         return 0;
     int left = 0;
     int right = nums.size() - 1;
+    int mid = 0;
     while (left <= right)
     {
-        int mid = left + (right - left) / 2;
+        mid = left + (right - left) / 2;
         if (nums[mid] == target)
         {
             return mid;
@@ -24,5 +25,5 @@ int searchInsert(vector<int> &nums, int target)
             left = mid + 1;
         }
     }
-    return nums[right] < target ? left : right;
+    return nums[mid] < target ? mid + 1 : mid;
 }
