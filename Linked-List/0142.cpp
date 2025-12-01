@@ -1,20 +1,20 @@
 #include <iostream>
 #include <unordered_set>
 
-struct ListNode
+struct Node
 {
     int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+    Node *next;
+    Node(int x) : val(x), next(NULL) {}
 };
 
 // 方法一：哈希表 O(N) O(N)
-ListNode *detectCycle_(ListNode *head)
+Node *detectCycle_(Node *head)
 {
     if (!head)
         return nullptr;
-    ListNode *current = head;
-    std::unordered_set<ListNode *> set;
+    Node *current = head;
+    std::unordered_set<Node *> set;
     while (current != nullptr)
     {
         if (set.find(current) != set.end())
@@ -25,12 +25,12 @@ ListNode *detectCycle_(ListNode *head)
     return nullptr;
 }
 // 方法二 快慢指针
-ListNode *detectCycle(ListNode *head)
+Node *detectCycle(Node *head)
 {
     if (!head)
         return nullptr;
-    ListNode *fast = head;
-    ListNode *slow = head;
+    Node *fast = head;
+    Node *slow = head;
     while (fast && slow)
     {
         if (!fast->next)
@@ -39,7 +39,7 @@ ListNode *detectCycle(ListNode *head)
         slow = slow->next;
         if (fast == slow)
         {
-            ListNode *current = head;
+            Node *current = head;
             while (current != slow)
             {
                 slow = slow->next;
